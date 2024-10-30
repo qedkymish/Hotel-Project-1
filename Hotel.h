@@ -39,6 +39,9 @@ public:
     //Getter for the total revenue for the day.
     int getRevenue() const;
 
+
+    void displayRevenue() const;
+
     //Method to display the inventory of all room types.
     void displayInventory() const;
 
