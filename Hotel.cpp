@@ -15,11 +15,12 @@ void Hotel::displayHeader() const
 	//Print program title
 	cout << "========================================\n";
 	cout << "   Grossmont Hotel Reservation System   \n";
+	cout << "          by Qusay Edkymish             \n";
 	cout << "========================================\n";
 
 
 	//Prompt user to start the program.
-	cout << "Wellcome! Press any key to start...\n";
+	cout << "Welcome! Press any key to start...\n";
 	cin.get();
 }
 
@@ -76,8 +77,7 @@ void Hotel::mainMenu()
 			break;
 
 		case 3:
-			//Diplay the revenue for today
-			cout << "\nThe total revenue for today is: $" << getRevenue() << "\n";
+			displayRevenue();
 			break;
 
 		case 0:
@@ -101,12 +101,12 @@ void Hotel::reservationMenu()
 
 	while (subMenu)
 	{
-		//Display the menu name
+		//Print menu name
 		cout << "\n=====================\n";
 		cout << "     Reservation      \n";
 		cout << "=====================\n\n";
 
-		//Display reservation menu options
+		//Display menu options
 		cout << "1. Standard Room, Courtyard\n";
 		cout << "2. Standard Room, Scenic\n";
 		cout << "3. Deluxe Suite\n";
@@ -196,6 +196,7 @@ void Hotel::reservationMenu()
 //Method to display the inventory of all room types.
 void Hotel::displayInventory() const 
 {
+	//Print menu name
 	cout << "\n=====================\n";
 	cout << "    The Inventory    \n";
 	cout << "=====================\n\n";
@@ -213,12 +214,14 @@ void Hotel::displayInventory() const
 	cout << left << setw(20) << "Penthouse" << left << setw(10) << "Reserved: " << right << setw(5) << penthouse.getReservedRooms()
 		<< "  Available: " << right << setw(5) << penthouse.getAvailableRooms() << "\n\n";
 
+	//Calculate the total number of reserved and available rooms
 	int totalReserved = standardRoom.getReservedRooms() + scenicRoom.getReservedRooms()
 		+ deluxeSuite.getReservedRooms() + penthouse.getReservedRooms();
 
 	int totalAvailable = standardRoom.getAvailableRooms() + scenicRoom.getAvailableRooms()
 		+ deluxeSuite.getAvailableRooms() + penthouse.getAvailableRooms();
 
+	//Display the total number of reserved and available rooms
 	cout << left << setw(20) << "Total reserved rooms: " << right << setw(5) << totalReserved << "\n";
 	cout << left << setw(20) << "Total available rooms: " << right << setw(5) << totalAvailable << "\n\n";
 }
@@ -229,6 +232,21 @@ int Hotel::getRevenue() const
 	//Calculate total revenue
 	return standardRoom.calcRevenue() + scenicRoom.calcRevenue()
 		+ deluxeSuite.calcRevenue() + penthouse.calcRevenue();
+}
+
+void Hotel::displayRevenue() const
+{
+	//Print menu name
+	cout << "\n=====================\n";
+	cout << "       Revenue        \n";
+	cout << "=====================\n\n";
+	
+	//Diplay the revenue for today
+	cout << left << setw(17) << "Courtyard: " << right << setw(5) << "$" << standardRoom.calcRevenue() << "\n";
+	cout << left << setw(17) << "Scenic: " << right << setw(5) << "$" << scenicRoom.calcRevenue() << "\n";
+	cout << left << setw(17) << "Deluxe Suite: " << right << setw(5) << "$" << deluxeSuite.calcRevenue() << "\n";
+	cout << left << setw(17) << "Penthouse: " << right << setw(5) << "$" << penthouse.calcRevenue() << "\n";
+	cout << "\nThe total revenue for today is: $" << getRevenue() << "\n\n";
 }
 
 //Virtual destructor
