@@ -19,7 +19,7 @@ protected:
 	string name;	//Name of the room (type.)
 	int available;	//Number of available rooms.
 	int reserved;	//Number of reserved rooms.
-	int price;		//Price per night for the room
+	int price;	//Price per night for the room
 
 public:
 	//Constructor ro initialize the room attributes.
