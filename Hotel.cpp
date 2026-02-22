@@ -4,7 +4,7 @@
 
 //Hotel.cpp
 #include "Hotel.h"
-
+#include <limits>
 
 //Constructor 
 Hotel::Hotel() {}
