@@ -1,10 +1,45 @@
-# Hotel Reservation System
-C++ implementation of a hotel reservation system that manages room inventory, reservations, and revenue tracking. The project leverages Object-Oriented Programming (OOP) principles such as class inheritance and polymorphism to provide a flexible and scalable solution for hotel management.
+# Hotel Reservation System (C++)
 
-# Features:
-1. Room Inventory Management: Tracks and displays the availability of four types of rooms—Standard Rooms (Courtyard and Scenic), Deluxe Suites, and Penthouses.
-2. Reservation System: Allows guests to reserve rooms based on type and availability.
-3. Revenue Tracking: Calculates and tracks the total revenue generated from reservations.
-4. getTotal() Function: Provides a summary of remaining rooms, reserved rooms, and total revenue for the day.
-# Purpose
-This project showcases the use of OOP concepts in C++ to solve real-world problems by efficiently managing hotel resources and reservations.
+A console-based hotel reservation system built in C++ using object-oriented design principles.
+
+## Overview
+
+This project models a hotel with multiple room types and allows users to:
+
+- Reserve different types of rooms
+- View room inventory
+- View total revenue generated
+
+The system is implemented using inheritance to represent different room types.
+
+## Room Types
+
+- Standard
+- Scenic
+- Deluxe
+- Penthouse
+
+Each room type has:
+- A name
+- A price per night
+- A total number of rooms available
+
+## Features
+
+- Menu-driven interface
+- Input validation
+- Room availability tracking
+- Revenue calculation
+- Object-oriented structure
+
+## Technologies
+
+- C++
+- Standard Library (iostream, string, limits)
+
+## Build & Run
+
+Compile using g++:
+
+```bash
+g++ -std=c++17 -Wall -Wextra -pedantic Hotel_Project_1.cpp Hotel.cpp Room.cpp -o hotel
