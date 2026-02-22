@@ -1,0 +1,18 @@
+# Compiled object files
+*.o
+*.obj
+
+# Executables
+hotel
+*.exe
+*.out
+
+# Build folders
+build/
+cmake-build-*/
+
+# Mac system files
+.DS_Store
+
+# VS Code
+.vscode/
