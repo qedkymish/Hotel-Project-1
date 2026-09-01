@@ -31,8 +31,8 @@ guest's name, phone, and email rather than just an occupied flag. Reports read s
 
 Two CSV files are written on every state change:
 
-- `reservations_log_MM-DD-YYYY.csv` for the current day
-- `master_log.csv` accumulating across days, with a header row
+- `reservations_log_MM-DD-YYYY.csv` for the current day, written with a header row
+- `master_log.csv` accumulating across days
 
 Both record date, action, room type, room number, status, revenue, and the three customer fields.
 On startup the program looks for today's log and rebuilds state from it, so reservations survive a
@@ -67,7 +67,8 @@ g++ -std=c++17 *.cpp -o hotel
 ./hotel
 ```
 
-Builds clean with GCC 11 under `-Wall`, and with MSVC.
+Builds clean with GCC 11 and 13 under `-Wall -Wextra`, and with MSVC. Valgrind and AddressSanitizer
+report zero leaks and zero errors across a reserve, report, and cancel sequence.
 
 ## Sample output
 
@@ -95,12 +96,13 @@ The corresponding log line:
 
 ```
 Date,Action,RoomType,RoomNumber,Status,Revenue,CustomerName,CustomerPhone,CustomerEmail
-09-01-2026,Reservation,Courtyard,101,Confirmed,125,John Smith,6195551234,john@example.com
+09-01-2026,Reservation,Courtyard,101,Confirmed,125.000000,John Smith,6195551234,john@example.com
 ```
 
 ## Possible next steps
 
-- Format revenue to two decimal places; it currently prints as a raw `double`
+- Format revenue to two decimal places; it currently writes as a raw `double` (`125.000000`)
+- Give `master_log.csv` the same header row the per-day log gets, so it opens cleanly in a spreadsheet
 - Multi-night reservations with check-in and check-out dates
 - Replace the flat CSV store with SQLite, which would also make cancellations transactional
 - Extract the reporting code from `Hotel` into its own class; `Hotel.cpp` is doing too much
